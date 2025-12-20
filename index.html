@@ -9,20 +9,46 @@
 
 <style>
 :root{
-  --bg:#000;
-  --panel:#0b0b0b;
-  --muted:rgba(255,255,255,.65);
-  --accent:#fff;
-  --border:rgba(255,255,255,.12);
-  --radius:12px;
+  --bg:#060b06;
+  --panel:#0f1a0f;
+  --muted:rgba(255,255,255,.7);
+  --accent:#eaffea;
+  --border:rgba(255,255,255,.18);
+  --radius:14px;
+  --navidad:#1fd655;
+  --rojo:#c91f1f;
 }
+
 *{box-sizing:border-box}
+
 body{
   margin:0;
-  background:var(--bg);
+  background:
+    radial-gradient(circle at top, #123 0%, transparent 60%),
+    var(--bg);
   color:var(--accent);
   font-family:'Poppins',system-ui;
+  overflow-x:hidden;
 }
+
+/* ❄ NIEVE */
+.snow{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+    radial-gradient(2px 2px at 120px 80px,#fff,transparent),
+    radial-gradient(1.5px 1.5px at 60px 140px,#fff,transparent);
+  background-size:200px 200px;
+  animation:snow 12s linear infinite;
+  opacity:.6;
+}
+@keyframes snow{
+  from{background-position:0 -200px}
+  to{background-position:0 600px}
+}
+
 .page{
   max-width:1200px;
   margin:28px auto;
@@ -31,79 +57,104 @@ body{
   grid-template-columns:300px 1fr;
   gap:20px;
 }
+
 .sidebar{
-  background:linear-gradient(180deg,var(--panel),#0e0e0e);
+  background:linear-gradient(180deg,#112511,#0b140b);
   border-radius:var(--radius);
   padding:18px;
   border:1px solid var(--border);
+  box-shadow:0 0 20px rgba(31,214,85,.15);
 }
+
 .brand{
   display:flex;
   gap:12px;
   align-items:center;
 }
+
 .logo{
-  width:48px;
-  height:48px;
-  background:#fff;
-  color:#000;
-  border-radius:10px;
+  width:52px;
+  height:52px;
+  background:linear-gradient(135deg,var(--rojo),#ff5f5f);
+  color:#fff;
+  border-radius:12px;
   display:flex;
   align-items:center;
   justify-content:center;
   font-weight:700;
+  box-shadow:0 0 10px rgba(255,80,80,.6);
 }
+
 .info-box{
   margin-top:18px;
-  padding:12px;
-  border-radius:10px;
+  padding:14px;
+  border-radius:12px;
   border:1px solid var(--border);
   font-size:13px;
   color:var(--muted);
+  background:rgba(0,0,0,.3);
 }
+
 .content{
   border:1px solid var(--border);
   border-radius:var(--radius);
   padding:22px;
+  background:rgba(0,0,0,.25);
 }
+
+h2::after{
+  content:" 🎄";
+}
+
 .game-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
   gap:16px;
   margin-top:16px;
 }
+
 .game-card{
-  border:2px solid #555;
-  border-radius:12px;
+  border:2px solid rgba(31,214,85,.4);
+  border-radius:14px;
   padding:16px;
-  background:rgba(255,255,255,.05);
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.25));
   display:flex;
   flex-direction:column;
+  transition:.2s;
 }
+.game-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 20px rgba(31,214,85,.25);
+}
+
 .game-card h3{margin:0 0 6px 0}
+
 .game-card p{
   font-size:13px;
   color:var(--muted);
 }
+
 .install-btn{
   margin-top:auto;
   padding:10px;
   border-radius:10px;
-  background:#000;
-  border:2px solid #555;
-  color:#fff;
+  background:linear-gradient(135deg,var(--navidad),#3cff88);
+  border:none;
+  color:#003b14;
   font-weight:700;
   cursor:pointer;
 }
 .install-btn:hover{
-  background:rgba(255,255,255,.06);
+  filter:brightness(1.1);
 }
+
 footer{
   text-align:center;
   color:var(--muted);
   font-size:13px;
   margin:24px 0;
 }
+
 @media(max-width:900px){
   .page{grid-template-columns:1fr}
 }
@@ -111,23 +162,26 @@ footer{
 </head>
 
 <body>
+<div class="snow"></div>
 
 <div class="page">
 
 <aside class="sidebar">
   <div class="brand">
-    <div class="logo">P</div>
+    <div class="logo">🎅</div>
     <div>
       <h1>Pixelcraft</h1>
-      <div style="font-size:12px;color:var(--muted)">Descargas oficiales</div>
+      <div style="font-size:12px;color:var(--muted)">
+        Especial Navidad
+      </div>
     </div>
   </div>
 
   <div class="info-box">
-    <strong>INFORMACIÓN</strong><br>
+    <strong>🎁 INFORMACIÓN</strong><br>
     Juegos gratis por Pixelcraft.<br>
-    Descargas directas sin acortadores ni publicidad.
-    no somos responsables sobre los virus
+    Descargas directas sin publicidad.<br>
+    No somos responsables de archivos externos.
   </div>
 </aside>
 
@@ -135,14 +189,14 @@ footer{
 
 <h2>Juegos disponibles</h2>
 <p style="font-size:14px;color:var(--muted)">
-Haz clic en instalar para descargar el juego directamente.
+Haz clic en instalar para descargar el juego.
 </p>
 
 <div class="game-grid">
 
   <div class="game-card">
     <h3>Warcraft 2</h3>
-    <p>𝘌𝘴𝘵𝘳𝘢𝘵𝘦𝘨𝘪𝘢 𝘤𝘭𝘢́𝘴𝘪𝘤𝘢 𝘥𝘦 𝘰𝘳𝘤𝘰𝘴 𝘺 𝘩𝘶𝘮𝘢𝘯𝘰𝘴 𝘦𝘯 𝘨𝘶𝘦𝘳𝘳𝘢</p>
+    <p>Estrategia clásica de orcos y humanos.</p>
     <a href="https://en.war2.ru/downloads/" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
@@ -150,7 +204,7 @@ Haz clic en instalar para descargar el juego directamente.
 
   <div class="game-card">
     <h3>Warcraft 3</h3>
-    <p>𝘌𝘴𝘵𝘳𝘢𝘵𝘦𝘨𝘪𝘢 𝘤𝘭𝘢́𝘴𝘪𝘤𝘢 𝘥𝘦 𝘰𝘳𝘤𝘰𝘴 𝘺 𝘩𝘶𝘮𝘢𝘯𝘰𝘴 𝘦ntre otras mas</p>
+    <p>Estrategia épica con múltiples razas.</p>
     <a href="LINK_AQUI" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
@@ -158,43 +212,42 @@ Haz clic en instalar para descargar el juego directamente.
 
   <div class="game-card">
     <h3>Five Nights at Freddy's</h3>
-    <p>𝘏𝘰𝘳𝘳𝘰𝘳 𝘥𝘦 𝘴𝘶𝘱𝘦𝘳𝘷𝘪𝘷𝘦𝘯𝘤𝘪𝘢 𝘤𝘰𝘯 𝘢𝘯𝘪𝘮𝘢𝘵𝘳𝘰́𝘯𝘪𝘤𝘰𝘴 𝘢𝘵𝘦𝘳𝘳𝘢𝘥𝘰𝘳𝘦𝘴</p>
+    <p>Horror de supervivencia con animatrónicos.</p>
     <a href="https://www.mediafire.com/file/g3h91wfwg74ap0z/Five+Nights+at+Freddy's.exe/file" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
   </div>
 
   <div class="game-card">
-    <h3>The sims 1</h3>
-    <p>simulador de vida</p>
+    <h3>The Sims 1</h3>
+    <p>Simulador de vida.</p>
     <a href="LINK_AQUI" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
   </div>
 
   <div class="game-card">
-    <h3>Party hard</h3>
-    <p> 𝘴𝘪𝘨𝘪𝘭𝘰 𝘦𝘯 𝘶𝘯𝘢 fiesta𝘭</p>
-    <a href="https://www.mediafire.com/file/afcqkr3atvfch1p/Sims3.txt/file" target="_blank">
+    <h3>Party Hard</h3>
+    <p>Sigilo y caos en fiestas.</p>
+    <a href="LINK_AQUI" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
   </div>
 
   <div class="game-card">
-    <h3>the sims 3/h3>
-    <p>simulador de vida</p>
+    <h3>The Sims 3</h3>
+    <p>Simulador de vida completo.</p>
     <a href="LINK_AQUI" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
   </div>
 
 </div>
-
 </main>
 </div>
 
 <footer>
-Pixelcraft — Juegos no oficiales
+🎄 Pixelcraft — Navidad Gamer
 </footer>
 
 </body>
