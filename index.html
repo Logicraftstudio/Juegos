@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pixelcraft Juegos — Navidad</title>
+<title>Pixelcraft Juegos</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -13,37 +13,34 @@
   --panel:#0f1a0f;
   --muted:rgba(255,255,255,.7);
   --accent:#eaffea;
-  --border:rgba(255,255,255,.18);
+  --border:rgba(255,255,255,.15);
   --radius:14px;
   --navidad:#1fd655;
   --rojo:#c91f1f;
   --gold:#ffd56a;
+  --discord:#5865F2;
+  --tiktok:#ff0050;
 }
 
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  background:
-    radial-gradient(circle at top, #123 0%, transparent 60%),
-    var(--bg);
+  background:var(--bg);
   color:var(--accent);
   font-family:'Poppins',system-ui;
-  overflow-x:hidden;
 }
 
-/* ❄ NIEVE */
+/* ❄ NIEVE OPTIMIZADA */
 .snow{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px,#fff,transparent),
-    radial-gradient(2px 2px at 120px 80px,#fff,transparent),
-    radial-gradient(1.5px 1.5px at 60px 140px,#fff,transparent);
-  background-size:200px 200px;
-  animation:snow 14s linear infinite;
-  opacity:.55;
+  background:
+    radial-gradient(2px 2px at 20px 30px,#fff,transparent);
+  background-size:180px 180px;
+  animation:snow 25s linear infinite;
+  opacity:.4;
 }
 @keyframes snow{
   from{background-position:0 -200px}
@@ -52,19 +49,18 @@ body{
 
 .page{
   max-width:1200px;
-  margin:28px auto;
-  padding:20px;
+  margin:24px auto;
+  padding:16px;
   display:grid;
-  grid-template-columns:300px 1fr;
-  gap:20px;
+  grid-template-columns:280px 1fr;
+  gap:16px;
 }
 
 .sidebar{
-  background:linear-gradient(180deg,#112511,#0b140b);
+  background:var(--panel);
   border-radius:var(--radius);
-  padding:18px;
+  padding:16px;
   border:1px solid var(--border);
-  box-shadow:0 0 20px rgba(31,214,85,.15);
 }
 
 .brand{
@@ -74,58 +70,50 @@ body{
 }
 
 .logo{
-  width:52px;
-  height:52px;
+  width:48px;
+  height:48px;
   background:linear-gradient(135deg,var(--rojo),#ff5f5f);
-  color:#fff;
   border-radius:12px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:700;
-  box-shadow:0 0 14px rgba(255,80,80,.8);
-  animation:pulse 2.5s ease-in-out infinite;
-}
-@keyframes pulse{
-  0%,100%{box-shadow:0 0 14px rgba(255,80,80,.7)}
-  50%{box-shadow:0 0 24px rgba(255,120,120,1)}
+  font-size:22px;
 }
 
 .info-box{
-  margin-top:18px;
-  padding:14px;
+  margin-top:16px;
+  padding:12px;
   border-radius:12px;
   border:1px solid var(--border);
   font-size:13px;
   color:var(--muted);
-  background:rgba(0,0,0,.3);
 }
 
-.event-box{
+/* BOTONES SOCIALES */
+.social{
   margin-top:14px;
-  padding:12px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#124d2b,#0a2a18);
-  border:1px solid rgba(31,214,85,.5);
-  font-size:13px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
-
-/* 🔔 sonido */
-.sound-toggle{
-  margin-top:14px;
-  width:100%;
+.social a{text-decoration:none}
+.social-btn{
   padding:10px;
   border-radius:10px;
-  background:rgba(255,255,255,.08);
-  border:1px solid var(--border);
-  color:var(--accent);
+  border:none;
+  font-weight:700;
+  color:#fff;
   cursor:pointer;
+  transition:transform .15s;
 }
+.social-btn:hover{transform:translateY(-2px)}
+.discord{background:var(--discord)}
+.tiktok{background:var(--tiktok)}
 
 .content{
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:22px;
+  padding:18px;
   background:rgba(0,0,0,.25);
 }
 
@@ -133,78 +121,53 @@ h2::after{content:" 🎄"}
 
 .game-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:16px;
-  margin-top:16px;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;
+  margin-top:14px;
 }
 
 .game-card{
-  border:2px solid rgba(31,214,85,.4);
+  border:1px solid rgba(31,214,85,.4);
   border-radius:14px;
-  padding:16px;
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.25));
+  padding:14px;
+  background:rgba(255,255,255,.06);
   display:flex;
   flex-direction:column;
-  transition:.25s;
-  position:relative;
+  transition:transform .15s;
 }
-.game-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 22px rgba(31,214,85,.35);
-}
+.game-card:hover{transform:translateY(-4px)}
 
-/* ⭐ destacado */
-.featured{
-  border-color:var(--gold);
-}
-.featured::before{
-  content:"⭐ DESTACADO";
-  position:absolute;
-  top:-10px;
-  right:12px;
-  background:var(--gold);
-  color:#3a2a00;
-  font-size:11px;
-  font-weight:700;
-  padding:4px 8px;
-  border-radius:8px;
-}
+.featured{border-color:var(--gold)}
 
 .tags{
   display:flex;
   gap:6px;
-  margin-bottom:8px;
-  flex-wrap:wrap;
+  margin-bottom:6px;
 }
 .tag{
   font-size:11px;
-  padding:4px 8px;
+  padding:3px 8px;
   border-radius:999px;
   background:rgba(255,255,255,.12);
 }
 
 .game-card h3{margin:6px 0}
-.game-card p{
-  font-size:13px;
-  color:var(--muted);
-}
+.game-card p{font-size:13px;color:var(--muted)}
 
 .install-btn{
   margin-top:auto;
-  padding:10px;
+  padding:9px;
   border-radius:10px;
-  background:linear-gradient(135deg,var(--navidad),#3cff88);
+  background:var(--navidad);
   border:none;
   color:#003b14;
   font-weight:700;
   cursor:pointer;
 }
-.install-btn:hover{filter:brightness(1.15)}
 
-/* 📜 aviso */
 details{
-  margin-top:24px;
-  padding:14px;
+  margin-top:20px;
+  padding:12px;
   border-radius:12px;
   background:rgba(0,0,0,.3);
   border:1px solid var(--border);
@@ -215,7 +178,7 @@ footer{
   text-align:center;
   color:var(--muted);
   font-size:13px;
-  margin:24px 0;
+  margin:22px 0;
 }
 
 @media(max-width:900px){
@@ -227,33 +190,27 @@ footer{
 <body>
 <div class="snow"></div>
 
-<audio id="bells" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/11/22/audio_3b7e8ef7d0.mp3" type="audio/mpeg">
-</audio>
-
 <div class="page">
 
 <aside class="sidebar">
   <div class="brand">
     <div class="logo">🎅</div>
-    <div>
-      <h1>Pixelcraft</h1>
-      <div style="font-size:12px;color:var(--muted)">Especial Navidad</div>
-    </div>
+    <h1>Pixelcraft</h1>
   </div>
 
   <div class="info-box">
-    <strong>🎁 INFORMACIÓN</strong><br>
     Juegos gratis por Pixelcraft.<br>
-    Descargas directas sin publicidad.<br>
-    No somos responsables de archivos externos.
+    Descargas externas bajo tu responsabilidad.
   </div>
 
-  <div class="event-box">
-    🎄 Evento especial disponible hasta el 31 de diciembre
+  <div class="social">
+    <a href="https://discord.gg/TU_INVITE" target="_blank">
+      <button class="social-btn discord">💬 Discord</button>
+    </a>
+    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank">
+      <button class="social-btn tiktok">🎵 TikTok</button>
+    </a>
   </div>
-
-  <button class="sound-toggle" onclick="toggleSound()">🔔 Activar / Desactivar sonido</button>
 </aside>
 
 <main class="content">
@@ -262,10 +219,7 @@ footer{
 <div class="game-grid">
 
   <div class="game-card featured">
-    <div class="tags">
-      <span class="tag">🎮 Estrategia</span>
-      <span class="tag">Clásico</span>
-    </div>
+    <div class="tags"><span class="tag">🎮 Estrategia</span></div>
     <h3>Warcraft 2</h3>
     <p>Estrategia clásica de orcos y humanos.</p>
     <a href="https://en.war2.ru/downloads/" target="_blank">
@@ -274,56 +228,10 @@ footer{
   </div>
 
   <div class="game-card">
-    <div class="tags">
-      <span class="tag">🎮 Estrategia</span>
-    </div>
-    <h3>Warcraft 3</h3>
-    <p>Estrategia épica con múltiples razas.</p>
+    <div class="tags"><span class="tag">😱 Horror</span></div>
+    <h3>FNAF</h3>
+    <p>Horror de supervivencia.</p>
     <a href="#" target="_blank">
-      <button class="install-btn">Instalar</button>
-    </a>
-  </div>
-
-  <div class="game-card featured">
-    <div class="tags">
-      <span class="tag">😱 Horror</span>
-    </div>
-    <h3>Five Nights at Freddy's</h3>
-    <p>Horror de supervivencia con animatrónicos.</p>
-    <a href="https://www.mediafire.com/file/g3h91wfwg74ap0z/Five+Nights+at+Freddy's.exe/file" target="_blank">
-      <button class="install-btn">Instalar</button>
-    </a>
-  </div>
-
-  <div class="game-card">
-    <div class="tags">
-      <span class="tag">👨‍👩‍👧‍👦 Simulación</span>
-    </div>
-    <h3>The Sims 1</h3>
-    <p>Simulador de vida.</p>
-    <a href="#" target="_blank">
-      <button class="install-btn">Instalar</button>
-    </a>
-  </div>
-
-  <div class="game-card">
-    <div class="tags">
-      <span class="tag">😱 Horror</span>
-    </div>
-    <h3>The Happyhills Homicide 2</h3>
-    <p>Horror slasher con misterios y crímenes.</p>
-    <a href="https://www.mediafire.com/file/jjotdgft1rcv9wa/The_Happyhills_Homicide_2.exe/file" target="_blank">
-      <button class="install-btn">Instalar</button>
-    </a>
-  </div>
-
-  <div class="game-card">
-    <div class="tags">
-      <span class="tag">👨‍👩‍👧‍👦 Simulación</span>
-    </div>
-    <h3>The Sims 3</h3>
-    <p>Simulador de vida completo.</p>
-    <a href="https://www.mediafire.com/file/afcqkr3atvfch1p/Sims3.txt/file" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
   </div>
@@ -332,25 +240,17 @@ footer{
 
 <details>
   <summary>⚠ Aviso legal</summary>
-  Las descargas redirigen a sitios externos. Pixelcraft no se hace responsable del contenido, uso indebido o daños derivados.
+  Pixelcraft no aloja archivos, solo enlaza contenido externo.
 </details>
 
 </main>
 </div>
 
 <footer>
-🎄 Pixelcraft © <span id="year"></span> — Que Santa te traiga FPS 🎮
+Pixelcraft © <span id="year"></span>
 </footer>
 
 <script>
-const audio = document.getElementById("bells");
-let playing = false;
-
-function toggleSound(){
-  if(!playing){audio.play();}else{audio.pause();}
-  playing = !playing;
-}
-
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
