@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pixelcraft Juegos</title>
+<title>Pixelcraft Juegos — Navidad</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -17,6 +17,7 @@
   --radius:14px;
   --navidad:#1fd655;
   --rojo:#c91f1f;
+  --gold:#ffd56a;
 }
 
 *{box-sizing:border-box}
@@ -41,8 +42,8 @@ body{
     radial-gradient(2px 2px at 120px 80px,#fff,transparent),
     radial-gradient(1.5px 1.5px at 60px 140px,#fff,transparent);
   background-size:200px 200px;
-  animation:snow 12s linear infinite;
-  opacity:.6;
+  animation:snow 14s linear infinite;
+  opacity:.55;
 }
 @keyframes snow{
   from{background-position:0 -200px}
@@ -82,7 +83,12 @@ body{
   align-items:center;
   justify-content:center;
   font-weight:700;
-  box-shadow:0 0 10px rgba(255,80,80,.6);
+  box-shadow:0 0 14px rgba(255,80,80,.8);
+  animation:pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 14px rgba(255,80,80,.7)}
+  50%{box-shadow:0 0 24px rgba(255,120,120,1)}
 }
 
 .info-box{
@@ -95,6 +101,27 @@ body{
   background:rgba(0,0,0,.3);
 }
 
+.event-box{
+  margin-top:14px;
+  padding:12px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#124d2b,#0a2a18);
+  border:1px solid rgba(31,214,85,.5);
+  font-size:13px;
+}
+
+/* 🔔 sonido */
+.sound-toggle{
+  margin-top:14px;
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border);
+  color:var(--accent);
+  cursor:pointer;
+}
+
 .content{
   border:1px solid var(--border);
   border-radius:var(--radius);
@@ -102,9 +129,7 @@ body{
   background:rgba(0,0,0,.25);
 }
 
-h2::after{
-  content:" 🎄";
-}
+h2::after{content:" 🎄"}
 
 .game-grid{
   display:grid;
@@ -120,15 +145,45 @@ h2::after{
   background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.25));
   display:flex;
   flex-direction:column;
-  transition:.2s;
+  transition:.25s;
+  position:relative;
 }
 .game-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 0 20px rgba(31,214,85,.25);
+  transform:translateY(-5px);
+  box-shadow:0 0 22px rgba(31,214,85,.35);
 }
 
-.game-card h3{margin:0 0 6px 0}
+/* ⭐ destacado */
+.featured{
+  border-color:var(--gold);
+}
+.featured::before{
+  content:"⭐ DESTACADO";
+  position:absolute;
+  top:-10px;
+  right:12px;
+  background:var(--gold);
+  color:#3a2a00;
+  font-size:11px;
+  font-weight:700;
+  padding:4px 8px;
+  border-radius:8px;
+}
 
+.tags{
+  display:flex;
+  gap:6px;
+  margin-bottom:8px;
+  flex-wrap:wrap;
+}
+.tag{
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+}
+
+.game-card h3{margin:6px 0}
 .game-card p{
   font-size:13px;
   color:var(--muted);
@@ -144,8 +199,16 @@ h2::after{
   font-weight:700;
   cursor:pointer;
 }
-.install-btn:hover{
-  filter:brightness(1.1);
+.install-btn:hover{filter:brightness(1.15)}
+
+/* 📜 aviso */
+details{
+  margin-top:24px;
+  padding:14px;
+  border-radius:12px;
+  background:rgba(0,0,0,.3);
+  border:1px solid var(--border);
+  font-size:13px;
 }
 
 footer{
@@ -164,6 +227,10 @@ footer{
 <body>
 <div class="snow"></div>
 
+<audio id="bells" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/11/22/audio_3b7e8ef7d0.mp3" type="audio/mpeg">
+</audio>
+
 <div class="page">
 
 <aside class="sidebar">
@@ -171,9 +238,7 @@ footer{
     <div class="logo">🎅</div>
     <div>
       <h1>Pixelcraft</h1>
-      <div style="font-size:12px;color:var(--muted)">
-        Especial Navidad
-      </div>
+      <div style="font-size:12px;color:var(--muted)">Especial Navidad</div>
     </div>
   </div>
 
@@ -183,18 +248,24 @@ footer{
     Descargas directas sin publicidad.<br>
     No somos responsables de archivos externos.
   </div>
+
+  <div class="event-box">
+    🎄 Evento especial disponible hasta el 31 de diciembre
+  </div>
+
+  <button class="sound-toggle" onclick="toggleSound()">🔔 Activar / Desactivar sonido</button>
 </aside>
 
 <main class="content">
-
 <h2>Juegos disponibles</h2>
-<p style="font-size:14px;color:var(--muted)">
-Haz clic en instalar para descargar el juego.
-</p>
 
 <div class="game-grid">
 
-  <div class="game-card">
+  <div class="game-card featured">
+    <div class="tags">
+      <span class="tag">🎮 Estrategia</span>
+      <span class="tag">Clásico</span>
+    </div>
     <h3>Warcraft 2</h3>
     <p>Estrategia clásica de orcos y humanos.</p>
     <a href="https://en.war2.ru/downloads/" target="_blank">
@@ -203,14 +274,20 @@ Haz clic en instalar para descargar el juego.
   </div>
 
   <div class="game-card">
+    <div class="tags">
+      <span class="tag">🎮 Estrategia</span>
+    </div>
     <h3>Warcraft 3</h3>
     <p>Estrategia épica con múltiples razas.</p>
-    <a href="LINK_AQUI" target="_blank">
+    <a href="#" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
   </div>
 
-  <div class="game-card">
+  <div class="game-card featured">
+    <div class="tags">
+      <span class="tag">😱 Horror</span>
+    </div>
     <h3>Five Nights at Freddy's</h3>
     <p>Horror de supervivencia con animatrónicos.</p>
     <a href="https://www.mediafire.com/file/g3h91wfwg74ap0z/Five+Nights+at+Freddy's.exe/file" target="_blank">
@@ -219,22 +296,31 @@ Haz clic en instalar para descargar el juego.
   </div>
 
   <div class="game-card">
+    <div class="tags">
+      <span class="tag">👨‍👩‍👧‍👦 Simulación</span>
+    </div>
     <h3>The Sims 1</h3>
     <p>Simulador de vida.</p>
-    <a href="LINK_AQUI" target="_blank">
+    <a href="#" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
   </div>
 
   <div class="game-card">
+    <div class="tags">
+      <span class="tag">😱 Horror</span>
+    </div>
     <h3>The Happyhills Homicide 2</h3>
-    <p>𝘏𝘰𝘳𝘳𝘰𝘳 𝘴𝘭𝘢𝘴𝘩𝘦𝘳 𝘤𝘰𝘯 𝘮𝘪𝘴𝘵𝘦𝘳𝘪𝘰𝘴 𝘺 𝘤𝘳𝘪́𝘮𝘦𝘯𝘦𝘴</p>
+    <p>Horror slasher con misterios y crímenes.</p>
     <a href="https://www.mediafire.com/file/jjotdgft1rcv9wa/The_Happyhills_Homicide_2.exe/file" target="_blank">
       <button class="install-btn">Instalar</button>
     </a>
   </div>
 
   <div class="game-card">
+    <div class="tags">
+      <span class="tag">👨‍👩‍👧‍👦 Simulación</span>
+    </div>
     <h3>The Sims 3</h3>
     <p>Simulador de vida completo.</p>
     <a href="https://www.mediafire.com/file/afcqkr3atvfch1p/Sims3.txt/file" target="_blank">
@@ -243,12 +329,30 @@ Haz clic en instalar para descargar el juego.
   </div>
 
 </div>
+
+<details>
+  <summary>⚠ Aviso legal</summary>
+  Las descargas redirigen a sitios externos. Pixelcraft no se hace responsable del contenido, uso indebido o daños derivados.
+</details>
+
 </main>
 </div>
 
 <footer>
-🎄 Pixelcraft — Navidad Gamer
+🎄 Pixelcraft © <span id="year"></span> — Que Santa te traiga FPS 🎮
 </footer>
+
+<script>
+const audio = document.getElementById("bells");
+let playing = false;
+
+function toggleSound(){
+  if(!playing){audio.play();}else{audio.pause();}
+  playing = !playing;
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
