@@ -31,24 +31,24 @@ body{
   font-family:'Poppins',system-ui;
 }
 
-/* ❄ NIEVE LIGERA */
+/* NIEVE OPTIMIZADA */
 .snow{
   position:fixed;
   inset:0;
   pointer-events:none;
   background:radial-gradient(2px 2px at 20px 30px,#fff,transparent);
-  background-size:180px 180px;
-  animation:snow 26s linear infinite;
-  opacity:.4;
+  background-size:200px 200px;
+  animation:snow 30s linear infinite;
+  opacity:.35;
 }
 @keyframes snow{
-  from{background-position:0 -200px}
-  to{background-position:0 600px}
+  from{background-position:0 -300px}
+  to{background-position:0 700px}
 }
 
 .page{
   max-width:1200px;
-  margin:24px auto;
+  margin:20px auto;
   padding:16px;
   display:grid;
   grid-template-columns:280px 1fr;
@@ -88,7 +88,7 @@ body{
   color:var(--muted);
 }
 
-/* BOTONES SOCIALES */
+/* SOCIALES */
 .social{
   margin-top:14px;
   display:flex;
@@ -96,16 +96,15 @@ body{
   gap:10px;
 }
 .social a{text-decoration:none}
+
 .social-btn{
-  padding:10px;
+  padding:12px;
   border-radius:10px;
   border:none;
   font-weight:700;
   color:#fff;
   cursor:pointer;
-  transition:transform .15s;
 }
-.social-btn:hover{transform:translateY(-2px)}
 .discord{background:var(--discord)}
 .tiktok{background:var(--tiktok)}
 
@@ -132,9 +131,8 @@ h2::after{content:" 🎄"}
   background:rgba(255,255,255,.06);
   display:flex;
   flex-direction:column;
-  transition:transform .15s;
+  min-height:210px;
 }
-.game-card:hover{transform:translateY(-4px)}
 
 .featured{border-color:var(--gold)}
 
@@ -152,16 +150,21 @@ h2::after{content:" 🎄"}
 }
 
 .game-card h3{margin:6px 0}
-.game-card p{font-size:13px;color:var(--muted)}
+.game-card p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.4;
+}
 
 .install-btn{
   margin-top:auto;
-  padding:9px;
+  padding:12px;
   border-radius:10px;
   background:var(--navidad);
   border:none;
   color:#003b14;
   font-weight:700;
+  font-size:14px;
   cursor:pointer;
 }
 
@@ -181,8 +184,39 @@ footer{
   margin:22px 0;
 }
 
-@media(max-width:900px){
-  .page{grid-template-columns:1fr}
+/* 📱 MOBILE */
+@media (max-width: 768px){
+  .page{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    order:-1;
+  }
+
+  .brand h1{
+    font-size:22px;
+  }
+
+  .social{
+    flex-direction:row;
+  }
+
+  .social-btn{
+    flex:1;
+    text-align:center;
+    padding:14px;
+    font-size:15px;
+  }
+
+  .game-grid{
+    grid-template-columns:1fr;
+  }
+
+  .install-btn{
+    font-size:16px;
+    padding:14px;
+  }
 }
 </style>
 </head>
@@ -222,42 +256,50 @@ footer{
     <div class="tags"><span class="tag">🎮 Estrategia</span><span class="tag">Clásico</span></div>
     <h3>Warcraft 2</h3>
     <p>Estrategia clásica de orcos y humanos.</p>
-    <a href="https://en.war2.ru/downloads/" target="_blank"><button class="install-btn">Instalar</button></a>
+    <a href="https://en.war2.ru/downloads/" target="_blank">
+      <button class="install-btn">Instalar</button>
+    </a>
   </div>
 
   <div class="game-card">
     <div class="tags"><span class="tag">🎮 Estrategia</span></div>
     <h3>Warcraft 3</h3>
     <p>Estrategia épica con múltiples razas.</p>
-    <a href="#" target="_blank"><button class="install-btn">Instalar</button></a>
+    <a href="#"><button class="install-btn">Instalar</button></a>
   </div>
 
   <div class="game-card featured">
     <div class="tags"><span class="tag">😱 Horror</span></div>
     <h3>Five Nights at Freddy's</h3>
     <p>Horror de supervivencia con animatrónicos.</p>
-    <a href="https://www.mediafire.com/file/g3h91wfwg74ap0z/Five+Nights+at+Freddy's.exe/file" target="_blank"><button class="install-btn">Instalar</button></a>
+    <a href="https://www.mediafire.com/file/g3h91wfwg74ap0z/Five+Nights+at+Freddy's.exe/file" target="_blank">
+      <button class="install-btn">Instalar</button>
+    </a>
   </div>
 
   <div class="game-card">
     <div class="tags"><span class="tag">👨‍👩‍👧‍👦 Simulación</span></div>
     <h3>The Sims 1</h3>
     <p>Simulador de vida.</p>
-    <a href="#" target="_blank"><button class="install-btn">Instalar</button></a>
+    <a href="#"><button class="install-btn">Instalar</button></a>
   </div>
 
   <div class="game-card">
     <div class="tags"><span class="tag">😱 Horror</span></div>
     <h3>The Happyhills Homicide 2</h3>
     <p>Horror slasher con misterios y crímenes.</p>
-    <a href="https://www.mediafire.com/file/jjotdgft1rcv9wa/The_Happyhills_Homicide_2.exe/file" target="_blank"><button class="install-btn">Instalar</button></a>
+    <a href="https://www.mediafire.com/file/jjotdgft1rcv9wa/The_Happyhills_Homicide_2.exe/file" target="_blank">
+      <button class="install-btn">Instalar</button>
+    </a>
   </div>
 
   <div class="game-card">
     <div class="tags"><span class="tag">👨‍👩‍👧‍👦 Simulación</span></div>
     <h3>The Sims 3</h3>
     <p>Simulador de vida completo.</p>
-    <a href="https://www.mediafire.com/file/afcqkr3atvfch1p/Sims3.txt/file" target="_blank"><button class="install-btn">Instalar</button></a>
+    <a href="https://www.mediafire.com/file/afcqkr3atvfch1p/Sims3.txt/file" target="_blank">
+      <button class="install-btn">Instalar</button>
+    </a>
   </div>
 
 </div>
